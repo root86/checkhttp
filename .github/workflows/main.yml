@@ -1,5 +1,6 @@
 name: CI
 on:
+  push:
   watch:
     types: started
 jobs:
@@ -9,5 +10,5 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run a one-line script
-        run: checkhttp.sh
+        run: bash ./checkhttp.sh
 
