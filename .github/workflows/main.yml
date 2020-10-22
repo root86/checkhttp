@@ -1,13 +1,15 @@
-name: CI
-on:
-  push:
+name: Share data between jobs
+
+on: [push]
+
 jobs:
-  build:
+  job_1:
+    name: Add 3 and 7
     runs-on: ubuntu-latest
     steps:
       - shell: bash
-      - run: |
+        run: |
           url=http://120.25.164.233:8080/appstore/app/checkversion?id=21
           content=$(curl -L $url)
           echo $content
-      - name: hello
+      - name: Upload math result for job 1
