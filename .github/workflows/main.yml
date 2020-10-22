@@ -24,4 +24,6 @@ jobs:
           if [ $newver != $ver ]; then
           echo find_new_ver_$newver
           newver=$(curl -L $sc)
+          else
+          echo nofind
           fi
