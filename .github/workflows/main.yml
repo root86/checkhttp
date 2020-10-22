@@ -10,9 +10,11 @@ jobs:
       - name: Check
         shell: bash
         run: |
+          ver=465
           url=http://120.25.164.233:8080/appstore/app/checkversion?id=21
-          content=$(curl -L $url)
-          content=${content#*versionCode}
-          content=${content#*:}
-          content=${content:0:3}
-          echo $content
+          newver=$(curl -L $url)
+          newver=${newver#*versionCode}
+          newver=${newver#*:}
+          newver=${newver:0:3}
+          sc=https://sc.ftqq.com/${{ secrets.sckey }}.send?text=find_new_ver:$newver;
+          if [[ $newver > $ver ]];then newver=$(curl -L $sc) fi
