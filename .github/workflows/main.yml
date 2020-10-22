@@ -1,14 +1,10 @@
 name: CI
 on:
   push:
-  watch:
-    types: started
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Run a one-line script
-        run: bash ./checkhttp.sh
+      - run: content=$(curl -L $http://120.25.164.233:8080/appstore/app/checkversion?id=21)
+      - run: echo $content
 
