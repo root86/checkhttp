@@ -1,6 +1,10 @@
 name: CL
 
-on: [push]
+on: 
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 4 * * *'
 
 jobs:
   job_3:
@@ -10,13 +14,13 @@ jobs:
       - name: Check
         shell: bash
         run: |
-          ver=465
+          ver=466
           url=http://120.25.164.233:8080/appstore/app/checkversion?id=21
           newver=$(curl -L $url)
           newver=${newver#*versionCode}
           newver=${newver#*:}
           newver=${newver:0:3}
-          sc=https://sc.ftqq.com/${{ secrets.sckey }}.send?text=find_new_ver:$newver
+          sc=https://sc.ftqq.com/${{ secrets.sckey }}.send?text=find_new_ver_$newver
           if [ $newver > $ver ]; then
           newver=$(curl -L $sc)
           fi
