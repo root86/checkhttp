@@ -1,15 +1,18 @@
-name: Share data between jobs
+name: CL
 
 on: [push]
 
 jobs:
   job_3:
-    name: Display results
-    runs-on: macOS-latest
+    name: CheckHttp
+    runs-on: ubuntu-latest
     steps:
-      - name: Print the final result
+      - name: Check
         shell: bash
         run: |
           url=http://120.25.164.233:8080/appstore/app/checkversion?id=21
           content=$(curl -L $url)
+          content=${content#*versionCode}
+          content=${content#*:}
+          content=${content:0:3}
           echo $content
