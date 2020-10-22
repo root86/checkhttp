@@ -8,4 +8,4 @@ echo $content
 content=${content#*:}
 echo $content
 content=${content:0:3}
-echo $content
+echo $content >output.txt
