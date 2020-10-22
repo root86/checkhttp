@@ -16,7 +16,7 @@ jobs:
           newver=${newver#*versionCode}
           newver=${newver#*:}
           newver=${newver:0:3}
-          sc=https://sc.ftqq.com/${{ secrets.sckey }}.send?text=find_new_ver:$newver;
+          sc=https://sc.ftqq.com/${{ secrets.sckey }}.send?text=find_new_ver:$newver
           if[[ $newver > $ver ]];then
           newver=$(curl -L $sc)
           fi
