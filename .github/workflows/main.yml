@@ -14,7 +14,7 @@ jobs:
       - name: Check
         shell: bash
         run: |
-          ver=469
+          ver=470
           url=http://120.25.164.233:8080/appstore/app/checkversion?id=21
           newver=$(curl -L $url)
           newver=${newver#*versionCode}
